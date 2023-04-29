@@ -13,13 +13,12 @@
         android:layout_weight="14" />
 
     <LinearLayout
-        android:id="@+id/ll"
+
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="15dp"
+
         android:layout_weight="0"
-        android:orientation="horizontal">
+        android:orientation="vertical">
 
         <Button
             android:id="@+id/btnTake"
@@ -27,8 +26,16 @@
             android:layout_height="50dp"
             android:layout_marginRight="0dp"
             android:backgroundTint="#2E8A81"
+            android:layout_marginTop="20dp"
             android:text="Skanna"
             android:textColor="@color/black" />
+
+        <ImageView
+            android:id="@+id/scannedCode"
+            android:layout_width="230dp"
+            android:layout_height="320dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="150dp" />
 
 
     </LinearLayout>
