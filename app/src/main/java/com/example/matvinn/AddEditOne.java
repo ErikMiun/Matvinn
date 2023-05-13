@@ -56,7 +56,7 @@ public class AddEditOne extends AppCompatActivity {
         btn_confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (id >- 0) {
+                if (id >= 0) {
                     Product updatedProduct = new Product(id, et_productName.getText().toString(), Integer.parseInt(et_expirydate.getText().toString()), et_img.getText().toString());
                     productList.set(id, updatedProduct);
                 }
