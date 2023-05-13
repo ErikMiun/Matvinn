@@ -1,6 +1,7 @@
 package com.example.matvinn;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -37,7 +39,14 @@ public class RecycleVievAdapter extends RecyclerView.Adapter<RecycleVievAdapter.
         holder.tv_productName.setText(productList.get(position).getName());
         holder.tv_expiryDate.setText(String.valueOf(productList.get(position).getExpiryDate()));
         Glide.with(this.context).load(productList.get(position).getImgURL()).into(holder.iv_productImage);
-
+        holder.parentLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, AddEditOne.class);
+                intent.putExtra("id", productList.get(position).getId());
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -49,13 +58,14 @@ public class RecycleVievAdapter extends RecyclerView.Adapter<RecycleVievAdapter.
         ImageView iv_productImage;
         TextView tv_productName;
         TextView tv_expiryDate;
-
+        ConstraintLayout parentLayout;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             iv_productImage = itemView.findViewById(R.id.iv_productImage);
             tv_productName = itemView.findViewById(R.id.tv_productName);
             tv_expiryDate = itemView.findViewById(R.id.tv_expiryDate);
+            parentLayout = itemView.findViewById(R.id.productLayout);
 
         }
     }
