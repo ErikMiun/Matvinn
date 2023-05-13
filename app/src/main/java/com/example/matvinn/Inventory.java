@@ -1,6 +1,8 @@
 package com.example.matvinn;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -22,10 +24,16 @@ public class Inventory extends AppCompatActivity {
     Button btn_addItem;
 
     List<Product> productList = new ArrayList<Product>();
+
+    private RecyclerView recyclerView;
+    private RecyclerView.Adapter mAdapter;
+    private RecyclerView.LayoutManager layoutManager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inventory);
+
 
         fillProductList();
         Log.d(TAG, "onCreate: " + productList.toString());
@@ -39,16 +47,23 @@ public class Inventory extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        recyclerView = findViewById(R.id.rv_foodList);
+        recyclerView.setHasFixedSize(true);
+        layoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
+        mAdapter = new RecycleVievAdapter(productList, this);
+        recyclerView.setAdapter(mAdapter);
     }
 
     private void fillProductList() {
-        Product p0 = new Product(0, "Mjök", 1, "a");
-        Product p1 = new Product(1, "Mjökq", 2, "a");
-        Product p2 = new Product(2, "Mjöka", 3, "aa");
-        Product p3 = new Product(3, "Mjöks", 4, "a");
-        Product p4 = new Product(4, "Mjökz", 5, "a");
-        Product p5 = new Product(5, "Mjökx", 6, "a");
-        Product p6 = new Product(6, "Mjökc", 7, "a");
+        Product p0 = new Product(0, "Mjök", 1, "https://static.mathem.se/shared/images/products/large/farsk-standardmjolk-3--1-5l-arla-1.jpg");
+        Product p1 = new Product(1, "Grädde", 2, "a");
+        Product p2 = new Product(2, "Ost", 3, "aa");
+        Product p3 = new Product(3, "Morot", 4, "a");
+        Product p4 = new Product(4, "Skinka", 5, "a");
+        Product p5 = new Product(5, "Lax", 6, "a");
+        Product p6 = new Product(6, "Köttbullar", 7, "a");
         Product p7 = new Product(7, "Mjökv", 8, "a");
         Product p8 = new Product(8, "Mjökb", 9, "a");
         Product p9 = new Product(9, "Mjökn", 10, "a");
