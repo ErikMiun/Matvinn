@@ -1,5 +1,7 @@
 package com.example.matvinn;
 
+import java.util.Comparator;
+
 public class Product {
     private int id;
     private String name;
@@ -13,6 +15,33 @@ public class Product {
         this.imgURL = imgURL;
     }
 
+    public static Comparator<Product> ProductAlphabeticalOrderComparator = new Comparator<Product>() {
+        @Override
+        public int compare(Product p1, Product p2) {
+            return p1.getName().compareTo(p2.getName());
+        }
+    };
+
+    public static Comparator<Product> ProductReverseAlphabeticalOrderComparator = new Comparator<Product>() {
+        @Override
+        public int compare(Product p1, Product p2) {
+            return p2.getName().compareTo(p1.getName());
+        }
+    };
+
+    public static Comparator<Product> ProductAscendingOrderComparator = new Comparator<Product>() {
+        @Override
+        public int compare(Product p1, Product p2) {
+            return p1.getExpiryDate() - p2.getExpiryDate();
+        }
+    };
+
+    public static Comparator<Product> ProductDescendingOrderComparator = new Comparator<Product>() {
+        @Override
+        public int compare(Product p1, Product p2) {
+            return p2.getExpiryDate() - p1.getExpiryDate();
+        }
+    };
     @Override
     public String toString() {
         return "Product{" +
