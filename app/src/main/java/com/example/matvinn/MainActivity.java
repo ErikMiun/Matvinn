@@ -9,7 +9,7 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button btn_inventory, btn_camera;
+    Button btn_inventory, btn_camera, btn_recipe;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -17,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
 
         btn_inventory = findViewById(R.id.btn_inventory);
         btn_camera = findViewById(R.id.btn_camera);
+        btn_recipe = findViewById(R.id.btn_recipe);
 
         btn_inventory.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -30,6 +31,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, Camera.class);
+                startActivity(intent);
+            }
+        });
+
+        btn_camera.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, Recipe.class);
                 startActivity(intent);
             }
         });

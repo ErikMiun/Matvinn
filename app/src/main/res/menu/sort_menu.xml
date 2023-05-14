@@ -9,8 +9,8 @@
         android:title="Ö->A" />
     <item
         android:id="@+id/menu_ascend"
-        android:title="Längst tid" />
+        android:title="Kortast tid" />
     <item
         android:id="@+id/menu_descend"
-        android:title="Kortast tid" />
+        android:title="Längst tid" />
 </menu>
